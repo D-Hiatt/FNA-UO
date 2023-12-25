@@ -188,12 +188,6 @@ namespace Microsoft.Xna.Framework.Graphics
 				h = Math.Max(Height >> level, 1);
 			}
 			int elementSize = MarshalHelper.SizeOf<T>();
-			int requiredBytes = (w * h * GetFormatSize(Format)) / GetBlockSizeSquared(Format);
-			int availableBytes = elementCount * elementSize;
-			if (requiredBytes > availableBytes)
-			{
-				throw new ArgumentOutOfRangeException("rect", "The region you are trying to upload is larger than the amount of data you provided.");
-			}
 
 			GCHandle handle = GCHandle.Alloc(data, GCHandleType.Pinned);
 			FNA3D.FNA3D_SetTextureData2D(
